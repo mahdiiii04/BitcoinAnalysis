@@ -5,6 +5,7 @@ from sklearn.preprocessing import MinMaxScaler
 from sklearn.metrics import mean_squared_error
 import numpy as np
 import joblib
+import pickle
 
 @st.cache_data
 def get_data(start, end):
@@ -39,7 +40,8 @@ train_size = int(len(X) * 0.8)
 X_train, X_test = X[:train_size], X[train_size:]
 y_train, y_test = y[:train_size], y[train_size:]
 
-model = joblib.load('model.pkl')
+with open('model.pkl', 'rb') as f:
+    model = pickle.load(f)
 
 predictions = model.predict(X_test)
 
