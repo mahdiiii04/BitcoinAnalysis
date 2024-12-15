@@ -120,7 +120,7 @@ st.plotly_chart(fig)
 
 st.write('## Histogram')
 
-bitcoin_data['Daily Return'] = bitcoin_data['Adj Close BTC-USD'].pct_change()
+bitcoin_data['Daily Return'] = bitcoin_data['Adj Close BTC-USD'].at()
 
 fig = go.Figure(data=[go.Histogram(x=bitcoin_data['Daily Return'], nbinsx=50)])
 
